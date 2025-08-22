@@ -50,14 +50,26 @@
       </div>
 
       <h3 style="color: var(--primary-color); margin: 40px 0 20px; font-size: 2rem;">Vista Previa de la Carta</h3>
-      <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);">
+      <div id="preview-container" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);">
+        <!-- Fallback para móviles -->
+        <div id="mobile-fallback" style="display: none; text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px; border: 2px dashed #ddd;">
+          <div style="font-size: 3rem; margin-bottom: 15px;">📱</div>
+          <h4 style="color: var(--primary-color); margin-bottom: 15px;">Vista no disponible en móviles</h4>
+          <p style="margin-bottom: 20px; color: var(--text-light);">Para ver la carta completa en dispositivos móviles, utiliza el botón de abajo:</p>
+          <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn">
+            📄 Abrir Carta Completa
+          </a>
+        </div>
+        
+        <!-- Iframe para escritorio -->
         <iframe 
+          id="carta-iframe"
           src="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/preview" 
           width="100%" 
           height="600" 
-          style="border: none; border-radius: 8px;"
-          loading="lazy"
-          title="Vista previa de la carta del Chiringuito Pedra Pateira">
+          style="border: none; border-radius: 8px; min-height: 600px;"
+          title="Vista previa de la carta del Chiringuito Pedra Pateira"
+          allow="autoplay">
         </iframe>
       </div>
 
@@ -127,16 +139,57 @@
       observer.observe(el);
     });
 
-    // Mejorar carga del iframe
+    // Mejorar carga y compatibilidad del iframe
     window.addEventListener('load', () => {
-      const iframe = document.querySelector('iframe[src*="drive.google.com"]');
-      if (iframe) {
+      const iframe = document.getElementById('carta-iframe');
+      const mobileView = document.getElementById('mobile-fallback');
+      const container = document.getElementById('preview-container');
+      
+      // Detectar si es móvil
+      const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        // En móviles, mostrar fallback
+        iframe.style.display = 'none';
+        mobileView.style.display = 'block';
+      } else {
+        // En escritorio, configurar iframe
         iframe.style.opacity = '0';
-        iframe.style.transition = 'opacity 0.3s ease';
-        iframe.onload = () => {
-          iframe.style.opacity = '1';
+        iframe.style.transition = 'opacity 0.5s ease';
+        
+        // Evento cuando se carga el iframe
+        iframe.onload = function() {
+          setTimeout(() => {
+            iframe.style.opacity = '1';
+          }, 500);
         };
+        
+        // Si no carga en 10 segundos, mostrar botón alternativo
+        setTimeout(() => {
+          if (iframe.style.opacity === '0') {
+            container.innerHTML = `
+              <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
+                <div style="font-size: 3rem; margin-bottom: 15px;">📄</div>
+                <h4 style="color: var(--primary-color); margin-bottom: 15px;">Vista previa no disponible</h4>
+                <p style="margin-bottom: 20px; color: var(--text-light);">Haz clic en el botón para ver la carta completa:</p>
+                <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn">
+                  📄 Ver Carta Completa
+                </a>
+              </div>
+            `;
+          }
+        }, 10000);
       }
+      
+      // Reajustar en cambio de orientación/tamaño
+      window.addEventListener('resize', () => {
+        const newIsMobile = window.innerWidth <= 768;
+        if (newIsMobile && !isMobile) {
+          location.reload(); // Recargar para aplicar vista móvil
+        } else if (!newIsMobile && isMobile) {
+          location.reload(); // Recargar para aplicar vista escritorio
+        }
+      });
     });
   </script>
 </body>
