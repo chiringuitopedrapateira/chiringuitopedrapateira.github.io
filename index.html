@@ -39,7 +39,7 @@
   </section>
 
   <!-- SOBRE NOSOTROS -->
-  <section class="sobre-nosotros fade-in-up">
+  <section class="sobre-nosotros fade-in-up animate-on-scroll">
     <div class="contenido">
       <h2>Sobre Nosotros</h2>
       <p>En Chiringuito Pedra Pateira ofrecemos una experiencia gastronómica única junto a la hermosa Pateira de Ribeira. Nuestro compromiso es servir comida fresca de la mejor calidad, crear un ambiente acogedor para toda la familia y ofrecer momentos inolvidables con vistas espectaculares y música en directo.</p>
@@ -48,7 +48,7 @@
   </section>
 
   <!-- UBICACIÓN -->
-  <section class="ubicacion fade-in-up">
+  <section class="ubicacion fade-in-up animate-on-scroll">
     <h2>Nuestra Ubicación</h2>
     <p>Encuéntranos en la hermosa Pateira de Ribeira, Galicia</p>
     <iframe 
@@ -115,7 +115,7 @@
     }, observerOptions);
 
     // Observar elementos con animación
-    document.querySelectorAll('.fade-in-up').forEach(el => {
+    document.querySelectorAll('.fade-in-up.animate-on-scroll').forEach(el => {
       observer.observe(el);
     });
 
