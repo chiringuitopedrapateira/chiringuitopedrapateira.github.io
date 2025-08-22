@@ -35,7 +35,7 @@
   </section>
 
   <!-- SECCIÓN DE CONTACTO -->
-  <section class="contacto fade-in-up">
+  <section class="contacto">
     <div style="max-width: 1000px; margin: 0 auto;">
       <h2 style="color: var(--primary-color); margin-bottom: 20px; font-size: 2.5rem;">¡Hablemos!</h2>
       <p style="font-size: 1.2rem; margin-bottom: 50px; color: var(--text-light);">
@@ -181,7 +181,7 @@
     }, observerOptions);
 
     // Observar elementos con animación
-    document.querySelectorAll('.fade-in-up').forEach(el => {
+    document.querySelectorAll('.fade-in-up.animate-on-scroll').forEach(el => {
       observer.observe(el);
     });
 
