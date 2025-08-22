@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carta - Chiringuito Pedra Pateira</title>
-  <meta name="description" content="Descubre nuestra deliciosa carta con las mejores tapas, pescados frescos y bebidas del Chiringuito Pedra Pateira en Ribeira, Galicia.">
+  <meta name="description" content="Descubre nuestra deliciosa carta con las mejores raciones, bocadillos, marisco fresco y bebidas.">
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   <section class="hero hero-small">
     <div class="hero-text">
       <h2>Nuestra Carta</h2>
-      <p>Descubre las mejores tapas, pescados frescos y bebidas para acompañar tu experiencia gastronómica junto a la Pateira.</p>
+      <p>Descubre las mejores raciones, bocadillos y marisco para acompañar tu experiencia gastronómica junto a la playa del Touro</p>
     </div>
   </section>
 
@@ -38,20 +38,23 @@
   <main class="contenido">
     <div style="max-width: 800px; margin: 0 auto;">
       <h2>Especialidades de la Casa</h2>
-      <p>Nuestro chef selecciona diariamente los mejores productos frescos del mar y la tierra gallega para ofrecerte una experiencia gastronómica única. Desde tapas tradicionales hasta pescados recién capturados, cada plato cuenta una historia de sabor y tradición.</p>
+      <p>Seleccionamos diariamente los mejores productos frescos del mar y la tierra gallega para ofrecerte una experiencia gastronómica única. Desde raciones tradicionales hasta pescados recién capturados, cada plato cuenta una historia de sabor y tradición.</p>
       
-
-
       <h3 style="color: var(--primary-color); margin: 40px 0 20px; font-size: 2rem;">Vista Previa de la Carta</h3>
       <div id="preview-container" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);">
         <!-- Fallback para móviles -->
         <div id="mobile-fallback" style="display: none; text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px; border: 2px dashed #ddd;">
           <div style="font-size: 3rem; margin-bottom: 15px;">📱</div>
-          <h4 style="color: var(--primary-color); margin-bottom: 15px;">Vista no disponible en móviles</h4>
-          <p style="margin-bottom: 20px; color: var(--text-light);">Para ver la carta completa en dispositivos móviles, utiliza el botón de abajo:</p>
-          <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn">
-            📄 Abrir Carta Completa
-          </a>
+          <h4 style="color: var(--primary-color); margin-bottom: 15px;">Vista Previa - Móvil</h4>
+          <p style="margin-bottom: 20px; color: var(--text-light);">Navega por nuestra carta directamente:</p>
+          <iframe 
+            id="mobile-carta-iframe"
+            src="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/preview" 
+            width="100%" 
+            height="500" 
+            style="border: none; border-radius: 8px;"
+            title="Vista previa de la carta - móvil">
+          </iframe>
         </div>
         
         <!-- Iframe para escritorio -->
@@ -66,10 +69,18 @@
         </iframe>
       </div>
 
+      <!-- SECCIÓN PARA LLEVAR O LOCAL -->
       <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center;">
-        <h3 style="color: var(--primary-color); margin-bottom: 15px;">🍽️ ¿Listo para disfrutar?</h3>
-        <p style="margin-bottom: 20px;">Reserva tu mesa y ven a disfrutar de nuestras especialidades con las mejores vistas de la Pateira.</p>
-        <a href="../contacto/index.html" class="btn">Reservar Mesa</a>
+        <h3 style="color: var(--primary-color); margin-bottom: 15px;">🍽️ Para Llevar o Local</h3>
+        <p style="margin-bottom: 20px;">Reserva tu comida para llevar o comer en local con las mejores vistas a la ría.</p>
+        <a href="../contacto/index.html" class="btn">Hacer pedido</a>
+      </div>
+
+      <!-- SECCIÓN DELIVERY -->
+      <div style="background: linear-gradient(135deg, var(--accent-color), #F39C12); padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center; color: white;">
+        <h3 style="color: white; margin-bottom: 15px;">🚚 Delivery a Domicilio</h3>
+        <p style="margin-bottom: 20px; opacity: 0.9;">Haz tu pedido online a través de Elogo y te lo llevamos directamente a casa. ¡Cómodo y rápido!</p>
+        <a href="https://elogo.es/" target="_blank" class="btn-secondary" style="border-color: white; color: white;">Pedir con Elogo</a>
       </div>
     </div>
   </main>
@@ -142,9 +153,19 @@
       const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       
       if (isMobile) {
-        // En móviles, mostrar fallback
+        // En móviles, mostrar iframe adaptado
         iframe.style.display = 'none';
         mobileView.style.display = 'block';
+        
+        // Configurar iframe móvil
+        const mobileIframe = document.getElementById('mobile-carta-iframe');
+        mobileIframe.style.opacity = '0';
+        mobileIframe.style.transition = 'opacity 0.5s ease';
+        mobileIframe.onload = function() {
+          setTimeout(() => {
+            mobileIframe.style.opacity = '1';
+          }, 500);
+        };
       } else {
         // En escritorio, configurar iframe
         iframe.style.opacity = '0';
