@@ -1,20 +1,63 @@
+/* ===== Import Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+  --primary-color: #2E86AB;
+  --primary-dark: #1B5F7D;
+  --secondary-color: #A23B72;
+  --accent-color: #F18F01;
+  --text-dark: #2D3748;
+  --text-light: #718096;
+  --background-light: #F7FAFC;
+  --white: #FFFFFF;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* ===== Reset & General ===== */
-body, h1, h2, h3, p, a, button {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-dark);
   line-height: 1.6;
-  background: #f8f9fa;
+  background: var(--background-light);
+  overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
-h1, h2, h3 { font-weight: 700; }
-p { margin-bottom: 1rem; }
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ===== Header ===== */
 .header {
@@ -22,88 +65,494 @@ p { margin-bottom: 1rem; }
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 15px 5%;
+  box-shadow: var(--shadow-medium);
   z-index: 1000;
+  transition: var(--transition);
+}
+
+.header.scrolled {
+  padding: 10px 5%;
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.logo { height: 50px; margin-right: 10px; border-radius: 8px; }
+.logo-container:hover {
+  transform: scale(1.02);
+}
 
-.navbar { display: flex; gap: 15px; }
-.navbar a { font-weight: 600; transition: 0.3s; }
-.navbar a:hover { color: #0077b6; }
+.logo {
+  height: 55px;
+  width: 55px;
+  margin-right: 15px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
 
-.hamburger { display: none; font-size: 28px; background:none; border:none; cursor:pointer; }
+.logo-container h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-/* ===== Hero ===== */
-.hero {
-  background: url('../img/portada_chiringuito.jpeg') center/cover no-repeat;
-  height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center;
-  color: #fff;
+.navbar {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar a {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 25px;
   position: relative;
-  padding: 0 20px;
+  transition: var(--transition);
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.navbar a:hover::before {
+  width: 80%;
+}
+
+.navbar a:hover {
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.hamburger:hover {
+  background: var(--background-light);
+  transform: scale(1.1);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  background: linear-gradient(135deg, rgba(46, 134, 171, 0.8), rgba(162, 59, 114, 0.7)), 
+              url('../img/portada_chiringuito.jpeg') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  padding: 0 5%;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  top: 0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+  z-index: 1;
 }
 
-.hero-text { position: relative; max-width:700px; z-index:1; }
-.hero h2 { font-size: 3rem; margin-bottom: 15px; }
-.hero p { font-size: 1.2rem; margin-bottom: 20px; }
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
 
-.hero-small { height: 50vh; }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* ===== Botones ===== */
-.btn, .btn-secondary, .btn-contacto {
-  padding: 12px 24px;
-  border-radius: 30px;
+.hero h2 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-small {
+  height: 60vh;
+  background: linear-gradient(135deg, rgba(46, 134, 171, 0.9), rgba(162, 59, 114, 0.8)), 
+              url('../img/portada_chiringuito.jpeg') center/cover no-repeat;
+}
+
+.hero-small .hero-text h2 {
+  font-size: 2.5rem;
+}
+
+.hero-small .hero-text p {
+  font-size: 1.1rem;
+}
+
+/* ===== Buttons ===== */
+.btn,
+.btn-secondary,
+.btn-contacto {
+  padding: 15px 30px;
+  border-radius: 50px;
   font-weight: 600;
-  text-align:center;
-  display:inline-block;
-  transition:0.3s;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.btn { background: #0077b6; color:#fff; }
-.btn:hover { background:#023e8a; }
+.btn {
+  background: linear-gradient(135deg, var(--accent-color), #F39C12);
+  color: var(--white);
+  box-shadow: var(--shadow-light);
+}
 
-.btn-secondary { background: #fff; color: #0077b6; border:2px solid #0077b6; }
-.btn-secondary:hover { background:#caf0f8; }
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: var(--transition);
+}
 
-.btn-contacto { background:#fff; color:#333; border:2px solid #333; margin:5px; }
-.btn-contacto:hover { background:#333; color:#fff; }
+.btn:hover::before {
+  left: 100%;
+}
 
-/* ===== Secciones ===== */
-section { padding:60px 20px; text-align:center; }
-.sobre-nosotros .contenido { max-width:700px; margin:0 auto; }
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
 
-/* ===== Ubicación ===== */
-.ubicacion iframe { border-radius:10px; border:1px solid #ccc; width:100%; height:400px; }
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 2px solid var(--white);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.btn-contacto {
+  background: var(--white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  margin: 10px;
+  min-width: 150px;
+}
+
+.btn-contacto:hover {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 80px 5%;
+}
+
+.sobre-nosotros {
+  background: var(--white);
+  text-align: center;
+}
+
+.sobre-nosotros .contenido {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sobre-nosotros h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.sobre-nosotros p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* ===== Content Sections ===== */
+.contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.contenido h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.contenido p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--text-light);
+}
+
+/* ===== Contact Section ===== */
+.contacto {
+  background: var(--white);
+  text-align: center;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+/* ===== Location ===== */
+.ubicacion {
+  background: var(--white);
+  text-align: center;
+}
+
+.ubicacion h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+}
+
+.ubicacion iframe {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  height: 450px;
+  border: none;
+}
 
 /* ===== Footer ===== */
-.footer { background:#333; color:#fff; text-align:center; padding:20px; margin-top:40px; }
-
-/* ===== Responsive ===== */
-@media (max-width:768px){
-  .navbar { display:none; flex-direction:column; background:#fff; position:absolute; top:60px; right:0; width:200px; padding:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-  .navbar.active{ display:flex; }
-  .hamburger { display:block; }
-  .hero h2 { font-size:2rem; }
-  .hero p { font-size:1rem; }
-  .btn, .btn-secondary { width:100%; display:block; margin:10px 0; }
+.footer {
+  background: linear-gradient(135deg, var(--text-dark), #1A202C);
+  color: var(--white);
+  text-align: center;
+  padding: 40px 5%;
+  margin-top: 0;
 }
 
+.footer p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 5%;
+  }
+  
+  .logo-container h1 {
+    font-size: 1.4rem;
+  }
+  
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-heavy);
+    min-width: 200px;
+  }
+  
+  .navbar.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .navbar a {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar a:last-child {
+    border-bottom: none;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .contact-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-contacto {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  section {
+    padding: 60px 5%;
+  }
+  
+  .ubicacion iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .logo {
+    height: 45px;
+    width: 45px;
+  }
+  
+  .logo-container h1 {
+    font-size: 1.2rem;
+  }
+  
+  .sobre-nosotros h2,
+  .ubicacion h2,
+  .contenido h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== Scroll Animations ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Enhanced Iframe Styles ===== */
+iframe {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition);
+}
+
+iframe:hover {
+  box-shadow: var(--shadow-heavy);
+}
