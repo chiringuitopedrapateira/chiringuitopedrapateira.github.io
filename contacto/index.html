@@ -4,54 +4,204 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto - Chiringuito Pedra Pateira</title>
+  <meta name="description" content="Contacta con el Chiringuito Pedra Pateira para reservas, consultas o información. WhatsApp, teléfono y email disponibles.">
   <link rel="stylesheet" href="../style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-
   <!-- HEADER -->
-  <header class="header">
-    <div class="logo-container">
+  <header class="header" id="header">
+    <div class="logo-container" onclick="goHome()">
       <img src="../img/IMG_1129.jpeg" alt="Logo Chiringuito Pedra Pateira" class="logo">
       <h1>Chiringuito Pedra Pateira</h1>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <a href="../index.html">Inicio</a>
       <a href="../carta/index.html">Carta</a>
       <a href="index.html">Contacto</a>
     </nav>
-    <button class="hamburger">&#9776;</button>
+    <button class="hamburger" id="hamburger" aria-label="Menú de navegación">
+      &#9776;
+    </button>
   </header>
 
   <!-- HERO -->
   <section class="hero hero-small">
     <div class="hero-text">
       <h2>Contacto</h2>
-      <p>Reserva tu mesa o consulta cualquier duda. ¡Estamos aquí para ti!</p>
+      <p>Reserva tu mesa, consulta cualquier duda o simplemente salúdanos. ¡Estamos aquí para hacer tu experiencia perfecta!</p>
     </div>
   </section>
 
-  <!-- BOTONES DE CONTACTO -->
-  <section class="contacto">
-    <div class="contact-buttons">
-      <a href="mailto:chiringuitopedrapateira@gmail.com" class="btn-contacto">Email</a>
-      <a href="https://wa.me/34677780261" target="_blank" class="btn-contacto">WhatsApp</a>
-      <a href="tel:+34677780261" class="btn-contacto">Llamar</a>
-    </div>
+  <!-- SECCIÓN DE CONTACTO -->
+  <section class="contacto fade-in-up">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <h2 style="color: var(--primary-color); margin-bottom: 20px; font-size: 2.5rem;">¡Hablemos!</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 50px; color: var(--text-light);">
+        Elige la forma que más te convenga para ponerte en contacto con nosotros
+      </p>
 
-    <h2 style="text-align:center; margin:40px 0 20px;">Dónde estamos</h2>
-    <iframe src="https://maps.google.com/maps?q=Chiringuito%20Pedra%20Pateira%20Ribeira%20Galicia&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:1px solid #ccc; border-radius:10px;" allowfullscreen loading="lazy"></iframe>
+      <!-- BOTONES DE CONTACTO -->
+      <div class="contact-buttons" style="margin-bottom: 60px;">
+        <a href="mailto:chiringuitopedrapateira@gmail.com" class="btn-contacto" title="Enviar email">
+          📧 Email
+        </a>
+        <a href="https://wa.me/34677780261?text=Hola,%20me%20gustaría%20hacer%20una%20reserva%20en%20el%20Chiringuito%20Pedra%20Pateira" target="_blank" class="btn-contacto" title="Contactar por WhatsApp">
+          💬 WhatsApp
+        </a>
+        <a href="tel:+34677780261" class="btn-contacto" title="Llamar por teléfono">
+          📞 Llamar
+        </a>
+      </div>
+
+      <!-- INFORMACIÓN ADICIONAL -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+        
+        <!-- HORARIOS -->
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">🕐</div>
+          <h3 style="color: var(--primary-color); margin-bottom: 15px;">Horarios</h3>
+          <p style="margin-bottom: 10px;"><strong>Temporada Alta:</strong><br>Todos los días 11:00 - 24:00</p>
+          <p style="margin-bottom: 10px;"><strong>Temporada Baja:</strong><br>Consultar disponibilidad</p>
+          <p style="font-size: 0.9rem; color: var(--text-light);">Los horarios pueden variar según la temporada y condiciones meteorológicas</p>
+        </div>
+
+        <!-- RESERVAS -->
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">📅</div>
+          <h3 style="color: var(--primary-color); margin-bottom: 15px;">Reservas</h3>
+          <p style="margin-bottom: 15px;">Te recomendamos reservar, especialmente en fin de semana y temporada alta.</p>
+          <p style="margin-bottom: 20px;">Confirmaremos tu reserva por WhatsApp o teléfono.</p>
+          <a href="https://wa.me/34677780261?text=Hola,%20me%20gustaría%20hacer%20una%20reserva%20en%20el%20Chiringuito%20Pedra%20Pateira" target="_blank" class="btn" style="font-size: 0.9rem; padding: 10px 20px;">
+            Reservar Ahora
+          </a>
+        </div>
+
+        <!-- INFORMACIÓN GENERAL -->
+        <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">ℹ️</div>
+          <h3 style="color: var(--primary-color); margin-bottom: 15px;">Información</h3>
+          <p style="margin-bottom: 10px;">📍 <strong>Ubicación:</strong> Pateira, Ribeira, A Coruña</p>
+          <p style="margin-bottom: 10px;">🅿️ <strong>Aparcamiento:</strong> Disponible cerca</p>
+          <p style="margin-bottom: 10px;">👨‍👩‍👧‍👦 <strong>Ambiente:</strong> Familiar</p>
+          <p style="margin-bottom: 10px;">🎵 <strong>Música:</strong> En directo (fines de semana)</p>
+        </div>
+      </div>
+
+      <!-- MAPA -->
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="color: var(--primary-color); margin-bottom: 20px;">📍 Dónde Estamos</h2>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-light);">
+          Encuéntranos en la hermosa Pateira de Ribeira, un lugar privilegiado con vistas espectaculares
+        </p>
+        <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);">
+          <iframe 
+            src="https://maps.google.com/maps?q=Chiringuito%20Pedra%20Pateira%20Ribeira%20Galicia&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="450" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Ubicación del Chiringuito Pedra Pateira"
+            style="border: none; border-radius: 8px;">
+          </iframe>
+        </div>
+        <div style="margin-top: 20px;">
+          <a href="https://maps.google.com/maps?q=Chiringuito%20Pedra%20Pateira%20Ribeira%20Galicia" target="_blank" class="btn-secondary" style="display: inline-block; padding: 10px 20px; font-size: 0.9rem;">
+            🗺️ Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- LLAMADA A LA ACCIÓN FINAL -->
+      <div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 40px; border-radius: 12px; text-align: center; color: white;">
+        <h3 style="margin-bottom: 15px; font-size: 1.8rem;">🌟 ¡Te Esperamos!</h3>
+        <p style="margin-bottom: 25px; font-size: 1.1rem; opacity: 0.9;">
+          Ven a disfrutar de una experiencia única junto a la Pateira con la mejor gastronomía gallega
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/34677780261" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+          <a href="tel:+34677780261" class="btn-secondary">📞 Llamar</a>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia</p>
+    <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia | Todos los derechos reservados</p>
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.querySelector('.navbar');
+    // Variables globales
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    const header = document.getElementById('header');
+
+    // Función para ir a la página principal
+    function goHome() {
+      window.location.href = '../index.html';
+    }
+
+    // Toggle del menú hamburguesa
     hamburger.addEventListener('click', () => {
       navbar.classList.toggle('active');
+      hamburger.style.transform = navbar.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navbar.contains(e.target)) {
+        navbar.classList.remove('active');
+        hamburger.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // Efecto scroll en header
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Animaciones al hacer scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observar elementos con animación
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Efectos adicionales para botones de contacto
+    document.querySelectorAll('.btn-contacto, .btn, .btn-secondary').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px) scale(1.02)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Tracking de clicks en botones de contacto
+    document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"]').forEach(link => {
+      link.addEventListener('click', function() {
+        // Aquí podrías añadir tracking de Google Analytics o similar
+        console.log('Contacto utilizado:', this.href);
+      });
     });
   </script>
 </body>
