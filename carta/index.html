@@ -4,55 +4,140 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carta - Chiringuito Pedra Pateira</title>
+  <meta name="description" content="Descubre nuestra deliciosa carta con las mejores tapas, pescados frescos y bebidas del Chiringuito Pedra Pateira en Ribeira, Galicia.">
   <link rel="stylesheet" href="../style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-
   <!-- HEADER -->
-  <header class="header">
-    <div class="logo-container">
+  <header class="header" id="header">
+    <div class="logo-container" onclick="goHome()">
       <img src="../img/IMG_1129.jpeg" alt="Logo Chiringuito Pedra Pateira" class="logo">
       <h1>Chiringuito Pedra Pateira</h1>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <a href="../index.html">Inicio</a>
       <a href="index.html">Carta</a>
       <a href="../contacto/index.html">Contacto</a>
     </nav>
-    <button class="hamburger">&#9776;</button>
+    <button class="hamburger" id="hamburger" aria-label="Menú de navegación">
+      &#9776;
+    </button>
   </header>
 
   <!-- HERO -->
   <section class="hero hero-small">
     <div class="hero-text">
       <h2>Nuestra Carta</h2>
-      <p>Descubre las mejores tapas, pescados frescos y bebidas para acompañar.</p>
+      <p>Descubre las mejores tapas, pescados frescos y bebidas para acompañar tu experiencia gastronómica junto a la Pateira.</p>
     </div>
   </section>
 
   <!-- CONTENIDO -->
-  <main class="contenido">
-    <p>Puedes ver nuestra carta completa en el siguiente enlace:</p>
-    <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn">
-      Ver Carta en Drive
-    </a>
+  <main class="contenido fade-in-up">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2>Especialidades de la Casa</h2>
+      <p>Nuestro chef selecciona diariamente los mejores productos frescos del mar y la tierra gallega para ofrecerte una experiencia gastronómica única. Desde tapas tradicionales hasta pescados recién capturados, cada plato cuenta una historia de sabor y tradición.</p>
+      
+      <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); margin: 40px 0;">
+        <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.5rem;">📋 Consulta Nuestra Carta Completa</h3>
+        <p style="margin-bottom: 30px;">Puedes ver nuestra carta completa y actualizada con todos los precios y especialidades del día:</p>
+        <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn" style="display: inline-block; margin-bottom: 20px;">
+          📄 Ver Carta Completa
+        </a>
+        <p style="font-size: 0.9rem; color: #666;">Se abrirá en una nueva pestaña</p>
+      </div>
 
-    <h2 style="margin-top:60px;">Vista previa</h2>
-    <iframe src="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/preview" width="100%" height="600" style="border:1px solid #ccc; border-radius:10px;"></iframe>
+      <h3 style="color: var(--primary-color); margin: 40px 0 20px; font-size: 2rem;">Vista Previa de la Carta</h3>
+      <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);">
+        <iframe 
+          src="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/preview" 
+          width="100%" 
+          height="600" 
+          style="border: none; border-radius: 8px;"
+          loading="lazy"
+          title="Vista previa de la carta del Chiringuito Pedra Pateira">
+        </iframe>
+      </div>
+
+      <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 30px; border-radius: 12px; margin: 40px 0; text-align: center;">
+        <h3 style="color: var(--primary-color); margin-bottom: 15px;">🍽️ ¿Listo para disfrutar?</h3>
+        <p style="margin-bottom: 20px;">Reserva tu mesa y ven a disfrutar de nuestras especialidades con las mejores vistas de la Pateira.</p>
+        <a href="../contacto/index.html" class="btn">Reservar Mesa</a>
+      </div>
+    </div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia</p>
+    <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia | Todos los derechos reservados</p>
   </footer>
 
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.querySelector('.navbar');
+    // Variables globales
+    const hamburger = document.getElementById('hamburger');
+    const navbar = document.getElementById('navbar');
+    const header = document.getElementById('header');
+
+    // Función para ir a la página principal
+    function goHome() {
+      window.location.href = '../index.html';
+    }
+
+    // Toggle del menú hamburguesa
     hamburger.addEventListener('click', () => {
       navbar.classList.toggle('active');
+      hamburger.style.transform = navbar.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navbar.contains(e.target)) {
+        navbar.classList.remove('active');
+        hamburger.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // Efecto scroll en header
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Animaciones al hacer scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observar elementos con animación
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mejorar carga del iframe
+    window.addEventListener('load', () => {
+      const iframe = document.querySelector('iframe[src*="drive.google.com"]');
+      if (iframe) {
+        iframe.style.opacity = '0';
+        iframe.style.transition = 'opacity 0.3s ease';
+        iframe.onload = () => {
+          iframe.style.opacity = '1';
+        };
+      }
     });
   </script>
 </body>
 </html>
-
