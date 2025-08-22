@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chiringuito Pedra Pateira</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- HEADER -->
   <header class="header">
     <div class="logo-container">
@@ -16,21 +16,30 @@
       <h1>Chiringuito Pedra Pateira</h1>
     </div>
     <nav class="navbar">
-      <a href="../index.html">Inicio</a>
-      <a href="../carta/">Carta</a>
-      <a href="../contacto/">Contacto</a>
+      <a href="index.html">Inicio</a>
+      <a href="carta/index.html">Carta</a>
+      <a href="contacto/index.html">Contacto</a>
     </nav>
+    <button class="hamburger">&#9776;</button>
   </header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
-      <h2>Bienvenidos</h2>
+      <h2>Bienvenidos al Chiringuito Pedra Pateira</h2>
       <p>Disfruta de las mejores tapas y pescados frescos frente a la Pateira, en un ambiente familiar y con música en directo.</p>
       <div class="hero-buttons">
-        <a href="../carta/" class="btn">Ver Carta</a>
-        <a href="../contacto/" class="btn btn-secondary">Reservar</a>
+        <a href="carta/index.html" class="btn">Ver Carta</a>
+        <a href="contacto/index.html" class="btn btn-secondary">Reservar</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section class="sobre-nosotros">
+    <div class="contenido">
+      <h2>Sobre Nosotros</h2>
+      <p>En Chiringuito Pedra Pateira ofrecemos comida fresca, un ambiente acogedor y momentos inolvidables junto al mar.</p>
     </div>
   </section>
 
@@ -44,5 +53,14 @@
   <footer class="footer">
     <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia</p>
   </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+    hamburger.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
+
