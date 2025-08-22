@@ -568,3 +568,18 @@ iframe {
 iframe:hover {
   box-shadow: var(--shadow-heavy);
 }
+
+/* ===== Responsive Iframe ===== */
+@media (max-width: 768px) {
+  iframe[src*="drive.google.com"] {
+    height: 500px !important;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  iframe[src*="drive.google.com"] {
+    height: 400px !important;
+    min-height: 400px;
+  }
+}
