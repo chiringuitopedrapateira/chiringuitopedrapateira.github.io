@@ -535,15 +535,27 @@ section {
 /* ===== Scroll Animations ===== */
 @media (prefers-reduced-motion: no-preference) {
   .fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: var(--transition);
   }
   
-  .fade-in-up.visible {
+  .fade-in-up.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up.animate-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== Ensure main content is always visible ===== */
+.contenido,
+.contacto {
+  opacity: 1;
+  transform: none;
 }
 
 /* ===== Enhanced Iframe Styles ===== */
