@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- HEADER -->
   <header class="header">
     <div class="logo-container">
@@ -16,9 +17,10 @@
     </div>
     <nav class="navbar">
       <a href="../index.html">Inicio</a>
-      <a href="../carta/">Carta</a>
-      <a href="../contacto/">Contacto</a>
+      <a href="index.html">Carta</a>
+      <a href="../contacto/index.html">Contacto</a>
     </nav>
+    <button class="hamburger">&#9776;</button>
   </header>
 
   <!-- HERO -->
@@ -29,8 +31,8 @@
     </div>
   </section>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main style="text-align:center; padding:60px 20px;">
+  <!-- CONTENIDO -->
+  <main class="contenido">
     <p>Puedes ver nuestra carta completa en el siguiente enlace:</p>
     <a href="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/view?usp=drivesdk" target="_blank" class="btn">
       Ver Carta en Drive
@@ -40,9 +42,17 @@
     <iframe src="https://drive.google.com/file/d/1eb7WuQgVaSlt9DSuTEdU6WBSb9Et3jTn/preview" width="100%" height="600" style="border:1px solid #ccc; border-radius:10px;"></iframe>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p>&copy; 2025 Chiringuito Pedra Pateira | Ribeira, Galicia</p>
   </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+    hamburger.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
+
